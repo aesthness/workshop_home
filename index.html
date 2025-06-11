@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>스크린과 종이 사이</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Georgia&family=Arial&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="icon"
+      href="/workshop/workshop_compare/icon.svg"
+      type="image/svg"
+    />
+    <style>
+      body {
+        margin: 0;
+        font-family: "Apple SD Gothic Neo", sans-serif;
+        background-color: #fdfdfd;
+        color: #111;
+      }
+
+      header {
+        background-color: #ffffff;
+        border-bottom: 1px solid #ddd;
+        padding: 1rem 2rem;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      nav a {
+        margin: 0 1rem;
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+      }
+
+      section {
+        padding: 4rem 2rem;
+        max-width: 800px;
+        margin: auto;
+      }
+
+      h1,
+      h2 {
+        font-family: "Georgia", serif;
+      }
+
+      .card {
+        background-color: #f0f4f8;
+        padding: 2rem;
+        margin: 2rem 0;
+        border-radius: 8px;
+      }
+
+      iframe {
+        width: 100%;
+        height: 600px;
+        border: none;
+        margin-top: 2rem;
+      }
+
+      .font-test {
+        font-size: 1.2rem;
+        margin-top: 1rem;
+        border: 1px solid #ccc;
+        padding: 1rem;
+        background: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h2>스크린과 종이 사이</h2>
+      <nav>
+        <a href="#home">홈</a>
+        <a href="https://aesthness.github.io/workshop_compare/"
+          >폰트 비교하기</a
+        >
+        <a href="https://aesthness.github.io/workshop_detail/">폰트 실험실</a>
+        <a href="#book">책 보기</a>
+      </nav>
+    </header>
+
+    <section id="home">
+      <h1>디지털과 종이 사이의 경계에서</h1>
+      <div class="card">
+        <p>
+          이 프로젝트는 스크린 환경과 지면 환경에서 폰트가 어떻게 다르게 보이고
+          읽히는지 실험합니다. 웹에서 직접 체험해보세요.
+        </p>
+      </div>
+    </section>
+
+    <section id="compare">
+      <h2>폰트 비교하기</h2>
+      <div class="card">
+        <a href="https://aesthness.github.io/workshop_compare/">
+          <img src="image.png" alt="폰트 비교" />
+        </a>
+        <p>
+          아래는 다양한 폰트 스타일을 비교할 수 있는 공간입니다. 각 폰트를
+          클릭하여 스크린과 종이에서의 차이를 확인해보세요.
+        </p>
+      </div>
+    </section>
+
+    <section id="experiment">
+      <h2>폰트 실험실</h2>
+      <div class="card">
+        <a href="https://aesthness.github.io/workshop_detail/">
+          <img
+            src="image_02.png"
+            href="https://aesthness.github.io/workshop_detail/"
+            alt="폰트 실험실"
+          />
+        </a>
+        <p>
+          아래는 폰트 실험실입니다. 다양한 폰트를 입력하고, 스크린과 종이에서의
+          차이를 직접 체험해보세요.
+        </p>
+      </div>
+    </section>
+
+    <section id="book">
+      <h2>전체 책 보기 (참고용)</h2>
+      <iframe
+        src="https://online.fliphtml5.com/ydxce/fqle/"
+        title="책 보기"
+      ></iframe>
+    </section>
+  </body>
+</html>
