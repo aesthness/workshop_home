@@ -99,7 +99,7 @@
       }
       h1,
       h2 {
-        font-family: "Georgia", serif;
+        font-family: "SM3 견출명조", serif;
       }
 
       .logo {
@@ -215,13 +215,41 @@
     html {
       scroll-behavior: smooth;
     }
+
+      footer {
+      background-color: #f8f8f8;
+      padding: 2em;
+      font-family: 'Noto Sans KR', sans-serif;
+      color: #333;
+    }
+
+    .footer-container {
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .footer-title {
+      color: #008ce0;
+      font-size: 1.5em;
+      margin-bottom: 1em;
+    }
+
+    .footer-section {
+      margin-bottom: 1em;
+    }
+
+    .footer-section strong {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.2em;
+    }
     
     </style>
   </head>
   <body>
     <header>
       <div class="logo">
-        <a href="#" data-section="main">
+        <a href="#" data-section="intro">
           <h2>스크린과 종이 사이</h2>
         </a>
       </div>
@@ -795,6 +823,42 @@
         </p>  
       </section>
     </main>
+
+    <footer>
+      <div class="footer-container">
+        <h2 class="footer-title">스크린과 종이 사이</h2>
+        
+        <div class="footer-section">
+          <strong>편집</strong>
+          <p>천은지 이유빈</p>
+        </div>
+    
+        <div class="footer-section">
+          <strong>웹사이트</strong>
+          <p>김연욱</p>
+        </div>
+    
+        <div class="footer-section">
+          <strong>날짜</strong>
+          <p>2025년 6월 16일</p>
+        </div>
+    
+        <div class="footer-section">
+          <strong>학교 / 학과</strong>
+          <p>계원예술대학교 시각디자인과</p>
+        </div>
+    
+        <div class="footer-section">
+          <strong>수업</strong>
+          <p>시각디자인워크숍1</p>
+        </div>
+    
+        <div class="footer-section">
+          <strong>지도교수</strong>
+          <p>이용제</p>
+        </div>
+      </div>
+    </footer>
     <script>
       const navLinks = document.querySelectorAll(".nav a, .logo a");
       const sections = document.querySelectorAll(".content-section");
