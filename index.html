@@ -10,13 +10,17 @@
       type="image/svg"
     />
     <style>
+
       body {
         margin: 0;
         font-family: "Apple SD Gothic Neo", sans-serif;
         background-color: #fdfdfd;
         color: #111;
+        scroll-behavior: smooth;
       }
+
       header {
+        height: 45px;
         background-color: #ffffff;
         border-bottom: 1px solid #12b7f5;
         padding: 1rem 4rem;
@@ -62,7 +66,10 @@
         align-items: center;
       }
       .detail-btn {
-        display: inline-block;
+        margin: 0 auto;
+        max-width: 220px;
+        display: flex;
+        justify-content: center;
         text-align: center;
         margin-top: 15px;
         background-color: #12b7f5; /* 밝은 파란색 배경 */
@@ -142,6 +149,72 @@
       height: auto;
       border-radius: 4px;
     }
+
+    .hero {
+      height: 90vh;
+      background: url('bg.jpg') no-repeat;
+      background-size: cover;
+      background-position: center 35%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      z-index: 0;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      color: white;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+      margin: 0;
+      animation: bounceIn 1s ease-out;
+      animation-delay: 0.3s;
+    }
+
+    .scroll-down {
+      position: absolute;
+      bottom: 60px;
+      left: 50%;
+      transform: translateX(-50%) rotate(45deg);
+      width: 24px;
+      height: 24px;
+      border-right: 3px solid rgb(2, 141, 255);
+      border-bottom: 3px solid rgb(2, 141, 255);
+      animation: bounce 2s infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes bounceIn {
+      0% {
+        transform: translateY(-50px);
+        opacity: 0;
+      }
+      60% {
+        transform: translateY(20px);
+        opacity: 1;
+      }
+      80% {
+        transform: translateY(-10px);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateX(-50%) rotate(45deg) translateY(0);
+      }
+      50% {
+        transform: translateX(-50%) rotate(45deg) translateY(8px);
+      }
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
     
     </style>
   </head>
@@ -162,10 +235,17 @@
           >폰트 비교하기</a
         >
         <a href="https://aesthness.github.io/workshop_detail/">폰트 실험실</a>
+        <a href="#" data-section="main">책</a>
       </nav>
     </header>
+
+    <section class="hero">
+    <h1>스크린과 종이 사이</h1>
+    <a class="scroll-down" aria-label="Scroll down"></a>
+    </section>
+
     <main>
-      <section id="main" class="content-section active">
+      <section id="main" class="content-section">
         <h2>책 보기</h2>
         <iframe
           src="https://online.fliphtml5.com/ydxce/fqle/"
@@ -181,7 +261,7 @@
         </a>
       </section>
       
-      <section id="intro" class="content-section">
+      <section id="intro" class="content-section active">
         <div class="logo">
           <h2>스크린과 종이 사이</h2>
         </div>
@@ -718,27 +798,75 @@
     <script>
       const navLinks = document.querySelectorAll(".nav a, .logo a");
       const sections = document.querySelectorAll(".content-section");
+      const hero = document.querySelector(".hero");
+      const heroText = hero.querySelector("h1");
+      window.addEventListener("scroll", () => {
+      const hero = document.querySelector(".hero");
+      if (window.scrollY > window.innerHeight * 0.5) {
+        hero.classList.add("hidden");
+      } else {
+        hero.classList.remove("hidden");
+      }
+      
+      document.querySelectorAll('nav.nav a[data-section]').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const sectionId = link.getAttribute('data-section');
+        const section = document.getElementById(sectionId);
+        if (section) {
+          const headerHeight = document.querySelector('header').offsetHeight;
+          const sectionTop = section.getBoundingClientRect().top + window.pageYOffset;
+          window.scrollTo({
+            top: sectionTop - headerHeight, // header 높이만큼 뺌
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
 
+
+      let lastScrollY = window.scrollY;
+      let backgroundOffset = 0;
+      let ticking = false;
+
+      function onScroll() {
+        const currentScrollY = window.scrollY;
+        const deltaY = currentScrollY - lastScrollY;
+
+        // 스크롤 방향에 따라 배경 위치 누적 (패럴랙스)
+
+        // 텍스트는 현재 scrollY 기준으로 transform
+        heroText.style.transform = `translateY(${currentScrollY * -0.7}px)`;
+
+        lastScrollY = currentScrollY;
+        ticking = false;
+      }
+
+      function requestTick() {
+        if (!ticking) {
+          requestAnimationFrame(onScroll);
+          ticking = true;
+        }
+      }
+
+      window.addEventListener("scroll", requestTick);
+
+      // 탭 기능
       navLinks.forEach((link) => {
         link.addEventListener("click", function (e) {
           const sectionId = this.getAttribute("data-section");
-
-          // 내부 섹션 링크인 경우에만 탭 전환 처리
-          if (sectionId) {
+          if (sectionId && document.getElementById(sectionId)) {
             e.preventDefault();
             navLinks.forEach((l) => l.classList.remove("active"));
             this.classList.add("active");
 
             sections.forEach((sec) => {
-              if (sec.id === sectionId) {
-                sec.classList.add("active");
-              } else {
-                sec.classList.remove("active");
-              }
+              sec.classList.toggle("active", sec.id === sectionId);
             });
           }
         });
       });
+    })();
     </script>
   </body>
 </html>
