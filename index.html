@@ -244,27 +244,34 @@
     .footer-container {
       max-width: 800px;
       margin: auto;
-      display: flex;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* 2열 */
       gap: 2em;
     }
 
     .footer-title {
-      width: 100%;
+      grid-column: 1 / -1;
       color: #008ce0;
       font-size: 1.5em;
       margin-bottom: 1em;
     }
 
     .footer-section {
-      flex: 1 1 calc(33.333% - 2em); /* 한 줄에 3개씩 */
+      flex: 1 1 200px;
       min-width: 200px;
     }
 
     .footer-section strong {
       display: block;
       font-weight: 600;
-      margin-bottom: 0.2em;
+      font-size: 1em;
+      margin-bottom: 0.4em;  /* strong과 p 사이 여백 통일 */
+      line-height: 1.4;
+    }
+
+    .footer-section p {
+      margin: 0;
+      line-height: 1.5;
     }
 
     
@@ -857,7 +864,6 @@
         </p>  
       </section>
     </main>
-
     <footer>
       <div class="footer-container">
         <h2 class="footer-title">스크린과 종이 사이</h2>
@@ -868,18 +874,13 @@
         </div>
     
         <div class="footer-section">
-          <strong>학교 / 학과</strong>
-          <p>계원예술대학교 시각디자인과</p>
-        </div>
-    
-        <div class="footer-section">
-          <strong>날짜</strong>
-          <p>2025년 6월 16일</p>
-        </div>
-    
-        <div class="footer-section">
           <strong>웹사이트</strong>
           <p>김연욱</p>
+        </div>
+    
+        <div class="footer-section">
+          <strong>학교 / 학과</strong>
+          <p>계원예술대학교 시각디자인과</p>
         </div>
     
         <div class="footer-section">
@@ -888,11 +889,17 @@
         </div>
     
         <div class="footer-section">
+          <strong>날짜</strong>
+          <p>2025년 6월 16일</p>
+        </div>
+    
+        <div class="footer-section">
           <strong>지도교수</strong>
           <p>이용제</p>
         </div>
       </div>
     </footer>
+    
     <script>
       const navLinks = document.querySelectorAll(".nav a, .logo a");
       const sections = document.querySelectorAll(".content-section");
