@@ -182,7 +182,6 @@
     }
 
     .heroText {
-      margin-top: 10px;
       line-height: 30px;
       font-family: "SM3견출명조";
       color: white;
@@ -241,27 +240,33 @@
       font-family: 'Noto Sans KR', sans-serif;
       color: #333;
     }
-
+    
     .footer-container {
       max-width: 800px;
       margin: auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2em;
     }
-
+    
     .footer-title {
+      width: 100%;
       color: #008ce0;
       font-size: 1.5em;
       margin-bottom: 1em;
     }
-
+    
     .footer-section {
-      margin-bottom: 1em;
+      flex: 1 1 calc(33.333% - 2em); /* 한 줄에 3개씩 */
+      min-width: 200px;
     }
-
+    
     .footer-section strong {
       display: block;
       font-weight: 600;
       margin-bottom: 0.2em;
     }
+
     
     </style>
   </head>
